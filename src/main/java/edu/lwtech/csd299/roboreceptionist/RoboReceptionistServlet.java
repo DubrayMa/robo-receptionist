@@ -21,6 +21,7 @@ public class RoboReceptionistServlet extends HttpServlet {
 
     @Override
     public void init(ServletConfig config) throws ServletException {
+        //connect to database
         logger.warn("=========================================");
         logger.warn("  RoboReceptionistServlet init() started");
         logger.warn("    http://localhost:8080/roboreceptionist/servlet");
@@ -70,7 +71,22 @@ public class RoboReceptionistServlet extends HttpServlet {
                 model.put("prevIndex", prevIndex);
                 model.put("nextIndex", nextIndex);
                 break;
-                
+            case "Home":
+                //show Home page (home.tpl)
+                break;
+            case "Guest":
+                //show guest page (guest.tpl)
+                break;
+            case "Delivery":
+                //show delivery page (delivery.tpl)
+                break;  
+            case "Cancel":
+                //guest/delivery user decides this was the wrong company and cancels the form (home.tpl)
+                break; 
+            case "DeliveryType":
+                //will dictate where a delivery order email is sent to
+                break;
+
             default:
                 logger.debug("Unknown GET command received: " + command);
 
@@ -88,10 +104,47 @@ public class RoboReceptionistServlet extends HttpServlet {
         logger.info("OUT- GET " + request.getRequestURI() + " " + time + "ms");
     }
 
-    //TODO: doPost() goes here - if needed.
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) {
+        logger.debug("IN -POST " + request.getRequestURI());
+        long startTime = System.currentTimeMillis();
+        
+        String command = request.getParameter("cmd");
+        if (command == null) command = "";
+
+        String confirmationMessage = "";
+        String template = "confirmation.tpl";
+        Map<String, Object> model = new HashMap<>();
+        
+        switch (command) {
+            case "Message":
+
+                break;
+                
+            default:
+                logger.info("Unknown POST command received: " + command);
+
+                // Send 404 error response
+                try {
+                    response.sendError(HttpServletResponse.SC_NOT_FOUND);
+                } catch (IOException e)  {
+                    logger.error("IO Error: ", e);
+                }
+                return;
+        }
+
+        model.put("confirmationMessage", confirmationMessage);
+        
+        processTemplate(response, template, model);
+
+        long time = System.currentTimeMillis() - startTime;
+        logger.info("OUT- GET " + request.getRequestURI() + " " + time + "ms");
+    }
     
     @Override
     public void destroy() {
+        //disconnect from database
+
         logger.warn("-----------------------------------------");
         logger.warn("  RoboReceptionistServlet destroy() completed");
         logger.warn("-----------------------------------------");
@@ -120,11 +173,18 @@ public class RoboReceptionistServlet extends HttpServlet {
     private void addDemoData() {
         logger.debug("Creating sample DemoPojos...");
         
+        //guest name
         DemoPojoDAL.insertItem(new DemoPojo("Item I"));
+        //employee name
         DemoPojoDAL.insertItem(new DemoPojo("Item II"));
+        //message
         DemoPojoDAL.insertItem(new DemoPojo("Item III"));
         
         logger.info("...items inserted");
+    }
+    private void emailFormatLog(String employeeEmail, String guestName, String message)
+    {
+        
     }
 
 }

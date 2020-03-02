@@ -2,6 +2,7 @@ package edu.lwtech.csd299.roboreceptionist;
 
 import java.io.*;
 import java.util.*;
+import java.sql.*;
 import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
@@ -18,6 +19,8 @@ public class RoboReceptionistServlet extends HttpServlet {
 
     private static final String TEMPLATE_DIR = "/WEB-INF/classes/templates";
     private static final Configuration freemarker = new Configuration(Configuration.getVersion());
+
+    private static Connection con;
 
     @Override
     public void init(ServletConfig config) throws ServletException {
@@ -40,6 +43,25 @@ public class RoboReceptionistServlet extends HttpServlet {
         logger.info("Successfully Loaded Freemarker");
         
         addDemoData();
+        try
+        {  
+            
+            Class.forName("com.mysql.jdbc.Driver"); 
+            
+            //here _____ is database name, port #3306,  root is username and password  
+            con = DriverManager.getConnection("jdbc:mysql://(whatever we connect to):3306/(name of database)","root","root");  
+                
+            /* these are template statment and result set for query that could be in the dal
+             *
+             * Statement stmt=con.createStatement();  
+             * ResultSet rs = stmt.executeQuery("query");  
+             * 
+             */
+
+        }catch(Exception e)
+        { 
+            logger.error("cannot connect to database (name)", e);
+        }   
 
         logger.warn("Initialize complete!");
     }
@@ -144,7 +166,17 @@ public class RoboReceptionistServlet extends HttpServlet {
     @Override
     public void destroy() {
         //disconnect from database
+        try 
+        {
 
+            con.close();
+
+        } catch (Exception e)
+        {
+
+            logger.error("could not disconnect from database", e);
+        
+        }
         logger.warn("-----------------------------------------");
         logger.warn("  RoboReceptionistServlet destroy() completed");
         logger.warn("-----------------------------------------");

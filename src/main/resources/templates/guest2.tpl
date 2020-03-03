@@ -82,9 +82,9 @@
 		font-size: 0.9em;
 		height: 40px;
 		width: 200px;
-		}
-		
-	</style>	
+		}		
+	</style>
+	
 </head>
 
 <body>
@@ -97,17 +97,19 @@
 			
 			<textarea name="message" id="message"></textarea>
 			
-			<input type="radio" name="radio" id="radio" value="1" />
+			<input type="radio" name="radio" id="radio" value="I'm here for a meeting." />
 			<label for="radio">I'm here for a meeting.</label><br />
-			<input type="radio" name="radio" id="radio" value="2" />
+			<input type="radio" name="radio" id="radio" value="I'm here for lunch." />
 			<label for="radio">I'm here for lunch.</label><br />
-			<input type="radio" name="radio" id="radio" value="3" />
+			<input type="radio" name="radio" value="I'm here to see you." />
 			<label for="radio">I'm here to see you.</label>			
 		</fieldset>
 		
-		<div>		
-			<input type="submit" class="button" value="Submit" />
-			<a href="home.html"><input type="button" class="button" value="Cancel" /></a>
+		<div>	
+			<input type="submit" class="button" value="Submit" />			
+			<a href="/roboreceptionist/servlet?cmd=Home">
+				<input type="button" class="button" value="Cancel" />
+			</a>
 		</div>
 	</form>
 </body>

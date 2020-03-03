@@ -63,13 +63,18 @@
 		width: 200px;
 		}
 		
-	</style>	
+	</style>
+	<script type="text/javascript">
+		function btnClick(){
+			document.forms["form1"].submit();
+		}
+	</script>	
 </head>
 
 <body>
 	<h1><span>Visitor Input Page</span></h1>
 	
-	<form action="servlet" method="get">
+	<form name="form1" action="servlet" method="get">
 	
 		<fieldset id="guest1" class="guest1">
 			<legend>Please enter your name and the name of your vis-a-vis:</legend>
@@ -79,9 +84,13 @@
 			<input name="employee" id="employee" />
 		</fieldset>
 		
-		<p>		
-			<a href="guest2.html"> <input type="submit" class="button" value="Submit"></a>
-			<a href="home.html"><input type="button" class="button" value="Cancel"></a>
+		<p>	
+			<a href="/roboreceptionist/servlet?cmd=Guest2">	
+				<input type="button" class="button" value="Submit" onClick="btnClick();">
+			</a>
+			<a href="/roboreceptionist/servlet?cmd=Home">
+				<input type="button" class="button" value="Cancel">
+			</a>
 		</p>
 	</form>
 </body>

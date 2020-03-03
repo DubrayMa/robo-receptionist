@@ -54,16 +54,17 @@
 			width: 50px;
 		}
 
-		input[type="submit"] {
+		input[type="button1"] {
 		position: relative; top:1.5em;
 		display: inline;
 		background: rgb(255, 246, 205);
 		float: none;
 		height: 40px;
-		width: 200px;
+		width: 150px;
+		margin:10px;
 		}
 		
-		input[type="button"] {
+		input[type="button2"] {
 		position: relative; top:5em;
 		display: inline;
 		background: rgb(255, 246, 205);
@@ -78,22 +79,36 @@
 <body>
 	<h1><span>Delivery Page</span></h1>
 	
-	<form action="servlet" method="post">
+	<form action="servlet" method="get">
 	
 		<fieldset id="guest1" class="guest1">
 			<legend>Please click your delivery company button:</legend>
 			<p>		
-				<input type="submit" class="button" value="Amazon" />
-				<input type="submit" class="button" value="FedEx" />
-				<input type="submit" class="button" value="UPS" />
-				<input type="submit" class="button" value="GrubHub" />
-				<input type="submit" class="button" value="DoorDash" />		
-				<input type="submit" class="button" value="Other" />		
+				<a href="/roboreceptionist/servlet?cmd=Amazon">
+					<input type="button1" class="button" value="Amazon" />
+				</a>
+				<a href="/roboreceptionist/servlet?cmd=FedEx">
+					<input type="button1" class="button" value="FedEx" />
+				</a>
+				<a href="/roboreceptionist/servlet?cmd=UPS">
+					<input type="button1" class="button" value="UPS" />
+				</a>
+				<a href="/roboreceptionist/servlet?cmd=GrubHub">
+					<input type="button1" class="button" value="GrubHub" />
+				</a>
+				<a href="/roboreceptionist/servlet?cmd=DoorDash">
+					<input type="button1" class="button" value="DoorDash" />	
+				</a>
+				<a href="/roboreceptionist/servlet?cmd=Other">	
+					<input type="button1" class="button" value="Other" />
+				</a>		
 			</p>
 		</fieldset>
 		
 		<p>				
-			<a href="home.html"><input type="button" class="button" value="Cancel" /></a>
+			<a href="/roboreceptionist/servlet?cmd=Home">
+				<input type="button2" class="button" value="Cancel">
+			</a>
 		</p>
 	</form>
 </body>

@@ -90,7 +90,7 @@
 <body>
 	<h1><span>Message Page</span></h1>
 	
-	<form action="http://sign-in-please.com" method="get">
+	<form action="hservlet" method="get">
 	
 		<fieldset id="guest1" class="guest1" align="left">
 			<legend>Enter a message or choose a ready-made option:</legend>	

@@ -10,7 +10,7 @@
 		h1 span{position: relative; top:1.5em;}
 		p{text-align: center}
 
-		/* Field set styles */
+		
 
 		fieldset {
 			position: relative; top:3em;
@@ -29,7 +29,7 @@
 			width: 100%;
 		}
 		
-		/* Label styles */
+		
 
 		label {
 			clear: left;
@@ -40,7 +40,7 @@
 			width: 40%;
 		}
 
-		/* Input control styles */
+		
 
 		input {
 			display: block;
@@ -69,7 +69,7 @@
 <body>
 	<h1><span>Visitor Input Page</span></h1>
 	
-	<form action="http://sign-in-please.com" method="get">
+	<form action="servlet" method="get">
 	
 		<fieldset id="guest1" class="guest1">
 			<legend>Please enter your name and the name of your vis-a-vis:</legend>

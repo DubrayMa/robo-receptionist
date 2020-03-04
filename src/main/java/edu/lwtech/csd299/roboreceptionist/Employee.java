@@ -11,9 +11,9 @@ public class Employee {
     private String firstName;                 // Database ID (or -1 if it isn't in the database yet)
     private String lastName;            // Name of the item that the POJO is storing
     
-    public Employee() {
+    // public Employee() {
         
-    }
+    // }
     
     public Employee(String first, String last) {
 

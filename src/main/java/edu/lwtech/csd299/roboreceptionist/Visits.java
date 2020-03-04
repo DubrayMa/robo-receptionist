@@ -11,19 +11,32 @@ public class Visits {
     private String guest;            // Name of the item that the POJO is storing
     private String company;
     private Date time;
+    private String message;
     public Visits() {
         
     }
     
-    public Visits(Employee empl, String guest, String company) {
+    
+    public Visits(Employee empl, String guest, String company, String message) {
         this.emp = empl;
         this.guest = guest;
         this.company = company;
         time = new Date();
+        this.message = message;
     }
 
+    public Visits(Employee empl, String guest, String company){
+        this(empl, guest, company, "");
+    }
 
+    // incase team wants to make company optional instead of message 
+    // public Visits(Employee empl, String guest, String message){
+    //     this(empl, guest, "" , message);
+    // }
 
+    public String getMessage(){
+        return message;
+    }
     public Employee getEmployee(){
         return emp;
     }

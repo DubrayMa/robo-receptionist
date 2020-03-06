@@ -48,8 +48,8 @@ public class RoboReceptionistServlet extends HttpServlet {
             
             Class.forName("com.mysql.jdbc.Driver"); 
             
-            //here _____ is database name, port #3306,  root is username and password  
-            con = DriverManager.getConnection("jdbc:mysql://(whatever we connect to):3306/(name of database)","root","root");  
+            //here _____ is database name, port #3306,  root is username and password is lwtech 
+            con = DriverManager.getConnection("jdbc:mysql://(whatever we connect to):3306/(name of database)","root","lwtech");  
                 
             /* these are template statment and result set for query that could be in the dal
              *

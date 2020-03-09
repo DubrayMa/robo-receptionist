@@ -72,7 +72,7 @@ public class RoboReceptionistServlet extends HttpServlet {
         long startTime = System.currentTimeMillis();
 
         String command = request.getParameter("cmd");
-        if (command == null) command = "show";
+        if (command == null) command = "Home";//"show";
 
         String template = "";
         Map<String, Object> model = new HashMap<>();
@@ -93,21 +93,22 @@ public class RoboReceptionistServlet extends HttpServlet {
                 model.put("prevIndex", prevIndex);
                 model.put("nextIndex", nextIndex);
                 break;
-            case "Home":
+                case "Home":
                 //show Home page (home.tpl)
+                template = "home.tpl";
                 break;
-            case "Guest":
+                case "Guest1":
                 //show guest page (guest.tpl)
+                template = "guest1.tpl";
                 break;
-            case "Delivery":
+                case "Guest2":
+                //show guest page (guest.tpl)
+                template = "guest2.tpl";
+                break;
+                case "Delivery":
                 //show delivery page (delivery.tpl)
-                break;  
-            case "Cancel":
-                //guest/delivery user decides this was the wrong company and cancels the form (home.tpl)
+                template = "delivery.tpl";
                 break; 
-            case "DeliveryType":
-                //will dictate where a delivery order email is sent to
-                break;
 
             default:
                 logger.debug("Unknown GET command received: " + command);

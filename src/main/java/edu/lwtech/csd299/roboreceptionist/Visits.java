@@ -7,7 +7,7 @@ public class Visits {
     
     // Encapsulated member variables
     // TODO: Replace these with your actual member variables
-    private Employee emp;                 // Database ID (or -1 if it isn't in the database yet)
+    private String emp;                 // Database ID (or -1 if it isn't in the database yet)
     private String guest;            // Name of the item that the POJO is storing
     private String company;
     private Date time;
@@ -17,7 +17,7 @@ public class Visits {
     }
     
     
-    public Visits(Employee empl, String guest, String company, String message) {
+    public Visits(String empl, String guest, String company, String message) {
         this.emp = empl;
         this.guest = guest;
         this.company = company;
@@ -25,7 +25,7 @@ public class Visits {
         this.message = message;
     }
 
-    public Visits(Employee empl, String guest, String company){
+    public Visits(String empl, String guest, String company){
         this(empl, guest, company, "");
     }
 
@@ -37,7 +37,7 @@ public class Visits {
     public String getMessage(){
         return message;
     }
-    public Employee getEmployee(){
+    public String getEmployee(){
         return emp;
     }
     public String getEmployeeName() {

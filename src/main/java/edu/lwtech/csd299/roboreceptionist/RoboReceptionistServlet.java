@@ -109,6 +109,10 @@ public class RoboReceptionistServlet extends HttpServlet {
                 //show delivery page (delivery.tpl)
                 template = "delivery.tpl";
                 break; 
+                case "Admin":
+                //show delivery page (delivery.tpl)
+                template = "admin.tpl";
+                break; 
 
             default:
                 logger.debug("Unknown GET command received: " + command);

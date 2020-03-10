@@ -86,10 +86,10 @@
 		
 		<p>	
 			<a href="/roboreceptionist/servlet?cmd=Guest2">	
-				<input type="button" class="button" value="Submit" onClick="btnClick();">
+				<input type="button" class="button" value="Submit" onClick="btnClick();" />
 			</a>
 			<a href="/roboreceptionist/servlet?cmd=Home">
-				<input type="button" class="button" value="Cancel">
+				<input type="button" class="button" value="Cancel" />
 			</a>
 		</p>
 	</form>

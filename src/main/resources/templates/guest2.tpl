@@ -90,7 +90,7 @@
 <body>
 	<h1><span>Message Page</span></h1>
 	
-	<form action="servlet" method="get">
+	<form action="servlet" method="post">
 	
 		<fieldset id="guest1" class="guest1" align="left">
 			<legend>Enter a message or choose a ready-made option:</legend>	

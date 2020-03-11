@@ -20,7 +20,8 @@ public class RoboReceptionistServlet extends HttpServlet {
     private static final String TEMPLATE_DIR = "/WEB-INF/classes/templates";
     private static final Configuration freemarker = new Configuration(Configuration.getVersion());
 
-    private static Connection con;
+    private static final boolean USE_SQL = false;
+    private static VisitsDAL dal = null;
 
     @Override
     public void init(ServletConfig config) throws ServletException {
@@ -44,19 +45,8 @@ public class RoboReceptionistServlet extends HttpServlet {
         
         addDemoData();
         try
-        {  
-            
-            Class.forName("com.mysql.jdbc.Driver"); 
-            
-            //here _____ is database name, port #3306,  root is username and password is lwtech 
-            con = DriverManager.getConnection("jdbc:mysql://(whatever we connect to):3306/(name of database)","root","lwtech");  
-                
-            /* these are template statment and result set for query that could be in the dal
-             *
-             * Statement stmt=con.createStatement();  
-             * ResultSet rs = stmt.executeQuery("query");  
-             * 
-             */
+        {   
+            dal = USE_SQL ? initSqlDAL() : initMemoryDAL();
 
         }catch(Exception e)
         { 
@@ -173,14 +163,13 @@ public class RoboReceptionistServlet extends HttpServlet {
         //disconnect from database
         try 
         {
-
-            con.close();
-
-        } catch (Exception e)
+            logger.info("Disconnecting from the database.");
+            dal.disconnect();
+            logger.info("Disconneced!");
+        } 
+        catch (Exception e)
         {
-
             logger.error("could not disconnect from database", e);
-        
         }
         logger.warn("-----------------------------------------");
         logger.warn("  RoboReceptionistServlet destroy() completed");
@@ -193,6 +182,29 @@ public class RoboReceptionistServlet extends HttpServlet {
     }
 
     // ========================================================================
+
+    private VisitsDAL initMemoryDAL() throws ServletException {
+        return new VisitsDAL(null);
+    }
+
+    private VisitsDAL initSqlDAL() throws ServletException {
+        logger.info("Connecting to the database...");
+
+        String jdbcDriver = "org.mariadb.jdbc.Driver";          // Use MariaDB driver in case we connect to a cloud DB
+        String connString = "jdbc:mariadb://";
+        connString += "localhost:3306";
+        connString += "/topten";
+        connString += "?user=root&password=lwtech";             //TODO: Remove these credentials from the source code 
+
+        Connection conn = SQLUtils.connect(connString, jdbcDriver);
+        if (conn == null) {
+            logger.error("Unable to connect to SQL Database with JDBC string: " + connString);
+            throw new UnavailableException("Unable to connect to database.");
+        }
+        logger.info("...connected!");
+
+        return new VisitsDAL(conn);
+    }
 
     private void processTemplate(HttpServletResponse response, String template, Map<String, Object> model) {
         logger.debug("Processing Template: " + template);

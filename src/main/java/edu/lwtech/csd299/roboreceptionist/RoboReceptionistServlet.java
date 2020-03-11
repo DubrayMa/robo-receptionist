@@ -46,7 +46,8 @@ public class RoboReceptionistServlet extends HttpServlet {
         addDemoData();
         try
         {   
-            dal = USE_SQL ? initSqlDAL() : initMemoryDAL();
+            //for when we implement functions
+            //dal = USE_SQL ? initSqlDAL() : initMemoryDAL();
 
         }catch(Exception e)
         { 
@@ -164,7 +165,8 @@ public class RoboReceptionistServlet extends HttpServlet {
         try 
         {
             logger.info("Disconnecting from the database.");
-            dal.disconnect();
+            //when we add disconnect function
+            //dal.disconnect();
             logger.info("Disconneced!");
         } 
         catch (Exception e)
@@ -182,8 +184,8 @@ public class RoboReceptionistServlet extends HttpServlet {
     }
 
     // ========================================================================
-
-    private VisitsDAL initMemoryDAL() throws ServletException {
+    //for when we add the constructors in the DAL
+    /*private VisitsDAL initMemoryDAL() throws ServletException {
         return new VisitsDAL(null);
     }
 
@@ -204,7 +206,7 @@ public class RoboReceptionistServlet extends HttpServlet {
         logger.info("...connected!");
 
         return new VisitsDAL(conn);
-    }
+    }*/
 
     private void processTemplate(HttpServletResponse response, String template, Map<String, Object> model) {
         logger.debug("Processing Template: " + template);

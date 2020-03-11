@@ -21,7 +21,7 @@ public class RoboReceptionistServlet extends HttpServlet {
     private static final Configuration freemarker = new Configuration(Configuration.getVersion());
 
     private static final boolean USE_SQL = false;
-    private static VisitsDAL dal = null;
+    private static VisitsSqlDAL dal = null;
 
     @Override
     public void init(ServletConfig config) throws ServletException {
@@ -48,6 +48,7 @@ public class RoboReceptionistServlet extends HttpServlet {
         {   
             //for when we implement functions
             //dal = USE_SQL ? initSqlDAL() : initMemoryDAL();
+            dal = initSqlDAL();
 
         }catch(Exception e)
         { 
@@ -67,6 +68,8 @@ public class RoboReceptionistServlet extends HttpServlet {
 
         String template = "";
         Map<String, Object> model = new HashMap<>();
+        String[] visitReq = new String[4];
+        Visits visitsObj;
 
         //TODO: Add more URL commands to the servlet
         switch (command) {
@@ -84,25 +87,66 @@ public class RoboReceptionistServlet extends HttpServlet {
                 model.put("prevIndex", prevIndex);
                 model.put("nextIndex", nextIndex);
                 break;
-                case "Home":
+            case "Home":
                 //show Home page (home.tpl)
+                
                 template = "home.tpl";
                 break;
-                case "Guest1":
+            case "Guest1":
                 //show guest page (guest.tpl)
+                visitReq[0] = request.getParameter("employee");
+                visitReq[0] = request.getParameter("guest");
                 template = "guest1.tpl";
                 break;
-                case "Guest2":
+            case "Guest2":
                 //show guest page (guest.tpl)
+                visitReq[0] = request.getParameter("message");
                 template = "guest2.tpl";
                 break;
-                case "Delivery":
+            case "Delivery":
                 //show delivery page (delivery.tpl)
+                
                 template = "delivery.tpl";
                 break; 
-                case "Admin":
+            case "Admin":
                 //show delivery page (delivery.tpl)
+                
                 template = "admin.tpl";
+                break; 
+            case "Amazon":
+                //show delivery page (delivery.tpl)
+                visitsObj = new Visits("Recpetionist2","amazonDelivery","Amazon","package for John Doe");
+                template = "home.tpl";
+                break; 
+            case "UPS":
+                //show delivery page (delivery.tpl)
+                visitsObj = new Visits("Recpetionist1","upsDelivery","UPS","package for John Doe");
+
+                template = "home.tpl";
+                break; 
+            case "FedEx":
+                //show delivery page (delivery.tpl)
+                visitsObj = new Visits("Recpetionist3","fedexDelivery","FedEx","package for John Doe");
+
+                template = "home.tpl";
+                break; 
+            case "GrubHub":
+                //show delivery page (delivery.tpl)
+                visitsObj = new Visits("Recpetionist3","grubHubDelivery","GrubHub","package for John Doe");
+
+                template = "home.tpl";
+                break; 
+            case "DoorDash":
+                //show delivery page (delivery.tpl)
+                visitsObj = new Visits("Recpetionist2","doorDashDelivery","DoorDash","package for John Doe");
+
+                template = "home.tpl";
+                break; 
+            case "Other":
+                //show delivery page (delivery.tpl)
+                visitsObj = new Visits("Recpetionist5","Delivery","unspecified","package for John Doe");
+
+                template = "home.tpl";
                 break; 
 
             default:
@@ -187,15 +231,15 @@ public class RoboReceptionistServlet extends HttpServlet {
     //for when we add the constructors in the DAL
     /*private VisitsDAL initMemoryDAL() throws ServletException {
         return new VisitsDAL(null);
-    }
+    }*/
 
-    private VisitsDAL initSqlDAL() throws ServletException {
+    private VisitsSqlDAL initSqlDAL() throws ServletException {
         logger.info("Connecting to the database...");
 
         String jdbcDriver = "org.mariadb.jdbc.Driver";          // Use MariaDB driver in case we connect to a cloud DB
         String connString = "jdbc:mariadb://";
         connString += "localhost:3306";
-        connString += "/topten";
+        connString += "/roboreceptionist";
         connString += "?user=root&password=lwtech";             //TODO: Remove these credentials from the source code 
 
         Connection conn = SQLUtils.connect(connString, jdbcDriver);
@@ -205,8 +249,8 @@ public class RoboReceptionistServlet extends HttpServlet {
         }
         logger.info("...connected!");
 
-        return new VisitsDAL(conn);
-    }*/
+        return new VisitsSqlDAL(conn);
+    }
 
     private void processTemplate(HttpServletResponse response, String template, Map<String, Object> model) {
         logger.debug("Processing Template: " + template);

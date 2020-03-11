@@ -25,9 +25,9 @@ public class Visits {
         this.message = message;
     }
 
-    public Visits(String empl, String guest, String company){
-        this(empl, guest, company, "");
-    }
+    // public Visits(String empl, String guest, String company){
+    //     this(empl, guest, company, "");
+    // }
 
     // incase team wants to make company optional instead of message 
     // public Visits(Employee empl, String guest, String message){

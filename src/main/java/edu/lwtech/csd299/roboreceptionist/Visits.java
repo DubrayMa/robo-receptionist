@@ -40,9 +40,9 @@ public class Visits {
     public String getEmployee(){
         return emp;
     }
-    public String getEmployeeName() {
-        return emp.toString();
-    }
+    // public String getEmployeeName() {
+    //     return emp.toString();
+    // }
 
     public String getGuestName() {
         return guest;
@@ -52,8 +52,8 @@ public class Visits {
         return company;
     }
 
-    public String getTime() {
-        return time.toString();
+    public Date getVisitTime() {
+        return time;
     }
 
 

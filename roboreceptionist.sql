@@ -29,7 +29,7 @@ CREATE TABLE `Visits` (
   `guest` varchar(80) DEFAULT NULL,
   `company` varchar(80) DEFAULT NULL,
   `message` varchar(200) DEFAULT NULL,
-  `time` datetime DEFAULT NULL,
+  `time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `employee` varchar(80) DEFAULT NULL,
   PRIMARY KEY (`visitID`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
@@ -41,7 +41,7 @@ CREATE TABLE `Visits` (
 
 LOCK TABLES `Visits` WRITE;
 /*!40000 ALTER TABLE `Visits` DISABLE KEYS */;
-INSERT INTO `Visits` VALUES (1,'Mrs. FedEx','FedEx','Your package is here','2020-03-09 12:12:00','Matt');
+INSERT INTO `Visits` VALUES (1,'Mrs. FedEx','FedEx','Your package is here','2020-03-09 19:12:00','Matt');
 /*!40000 ALTER TABLE `Visits` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -54,4 +54,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-03-09 19:35:24
+-- Dump completed on 2020-03-10 18:30:20

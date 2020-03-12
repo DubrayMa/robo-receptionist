@@ -79,7 +79,7 @@
 <body>
 	<h1><span>Delivery Page</span></h1>
 	
-	<form action="servlet" method="get">
+	<form action="servlet" method="post">
 	
 		<fieldset id="guest1" class="guest1">
 			<legend>Please click your delivery company button:</legend>

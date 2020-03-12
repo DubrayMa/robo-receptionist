@@ -30,9 +30,9 @@ public class Visits {
     // }
 
     // incase team wants to make company optional instead of message 
-    // public Visits(Employee empl, String guest, String message){
+    //public Visits(String empl, String guest, String message){
     //     this(empl, guest, "" , message);
-    // }
+    //}
 
     public String getMessage(){
         return message;

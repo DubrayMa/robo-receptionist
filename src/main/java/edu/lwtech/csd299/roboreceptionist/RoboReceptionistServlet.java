@@ -64,28 +64,13 @@ public class RoboReceptionistServlet extends HttpServlet {
         long startTime = System.currentTimeMillis();
 
         String command = request.getParameter("cmd");
-        if (command == null) command = "Home";//"show";
+        if (command == null) command = "showHome";//"show";
 
         String template = "";
         Map<String, Object> model = new HashMap<>();
-        Visits visitsObj;
 
         //TODO: Add more URL commands to the servlet
         switch (command) {
-
-            case "show":
-                String indexParam = request.getParameter("index");
-                int index = (indexParam == null) ? 0 : Integer.parseInt(indexParam);
-                int numItems = DemoPojoDAL.getNumItems();
-                int nextIndex = (index + 1) % numItems;
-                int prevIndex = index - 1;
-                if (prevIndex < 0) prevIndex = numItems-1;
-
-                template = "show.tpl";
-                model.put("item", DemoPojoDAL.getItem(index));
-                model.put("prevIndex", prevIndex);
-                model.put("nextIndex", nextIndex);
-                break;
             case "showHome":
                 //show Home page (home.tpl)
                 
@@ -93,28 +78,18 @@ public class RoboReceptionistServlet extends HttpServlet {
                 break;
             case "showGuest":
                 //show guest page (guest.tpl)
-                template = "guest1.tpl";
+                template = "guest.tpl";
                 break;
             case "showDelivery":
                 //show delivery page (delivery.tpl)
                 
                 template = "delivery.tpl";
                 break; 
-            case "Admin":
+            case "showAdmin":
                 //show delivery page (delivery.tpl)
                 
                 template = "admin.tpl";
                 break; 
-            case "deliveryPerson":
-                String company = request.getParameter("company");
-
-                visitsObj = new Visits("Recpetionist2",company + "Delivery",company,"package for John Doe");
-                dal.insertVisits(visitsObj);
-                //alert/email receptionist
-                logger.info("your package has arrived please come and get it from: " + company);
-                template = "home.tpl";
-                break; 
-
             default:
                 logger.debug("Unknown GET command received: " + command);
 
@@ -143,26 +118,27 @@ public class RoboReceptionistServlet extends HttpServlet {
         String confirmationMessage = "";
         String template = "confirmation.tpl";
         Map<String, Object> model = new HashMap<>();
-        
+        Visits visits;
         switch (command) {
             case "submitGuest":
-                Visits visits;
-                String employeeName = request.getParameter("employee");
-                String guestName = request.getParameter("guest");
-                String company = request.getParameter("company");
-                String message = request.getParameter("message");
-                if(company != "")
-                {
-                    visits = new Visits(employeeName,guestName,company, message);
-                }
-                else 
-                {
-                    visits = new Visits(employeeName,guestName,company, message);
-                }
+
+                visits = getVisitsFromRequestVisits(request);
                 dal.insertVisits(visits);
+                
                 emailFormatLog(visits);
                 break;
-                
+            case "deliveryPerson":
+                String company = request.getParameter("company");
+                String message = "your package has arrived please come and get it from: ";
+
+                visits = new Visits("Recpetionist","john Doe",company,message);
+                dal.insertVisits(visits);
+
+                //alert/email receptionist
+                logger.info(message + company);
+                template = "confirmationPage.tpl";
+                break;  
+
             default:
                 logger.info("Unknown POST command received: " + command);
 
@@ -264,4 +240,21 @@ public class RoboReceptionistServlet extends HttpServlet {
         logger.info(visit.getMessage());
     }
 
+    private Visits getVisitsFromRequestVisits(HttpServletRequest request)
+    {
+        Visits visits;
+        String employeeName = request.getParameter("employee");
+        String guestName = request.getParameter("guest");
+        String company = "notACompany";//request.getParameter("company");
+        String message = request.getParameter("message");
+        if(company != "")
+        {
+            visits = new Visits(employeeName,guestName,company, message);
+        }
+        else 
+        {
+            visits = new Visits(employeeName,guestName,company, message);
+        }
+        return visits;
+    }
 }

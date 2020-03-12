@@ -27,13 +27,14 @@ import org.apache.log4j.Logger;
         query += " (guest, company, message, time, employee)";
         query += " VALUES ("+ Visit.getGuestName()+", "+ Visit.getCompany()+", "+ Visit.getMessage()+
         ", NOW(), " + Visit.getEmployee()+")";
+        //query += " VALUES (?,?,?,?,?)";
 
         //List<String> items = list.getItems();
 
         java.sql.Timestamp timee = new java.sql.Timestamp(Visit.getVisitTime().getTime()); 
 
-        // int listID = SQLUtils.executeSQLInsert(conn, query, "listID", 1, Visit.getGuestName(),
-        // Visit.getCompany(),Visit.getMessage(),timee, Visit.getEmployee());
+        //int listID = SQLUtils.executeSQLInsert(conn, query, "listID", 1, Visit.getGuestName(),
+        //Visit.getCompany(),Visit.getMessage(),timee, Visit.getEmployee());
 
         int listID = SQLUtils.executeSQLInsert(conn, query, "listID");
         

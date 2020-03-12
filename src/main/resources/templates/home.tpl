@@ -22,13 +22,13 @@
         <h1><span>Welcome!</span></h1>
         
         <p>
-            <a href="/roboreceptionist/servlet?cmd=Guest1">
+            <a href="/roboreceptionist/servlet?cmd=showGuest">
             <button class="button">Guest</button>            
             </a>
-            <a href="/roboreceptionist/servlet?cmd=Delivery">        
+            <a href="/roboreceptionist/servlet?cmd=showDelivery">        
             <button class="button">Delivery</button>
             </a>  
-            <a href="/roboreceptionist/servlet?cmd=Admin">        
+            <a href="/roboreceptionist/servlet?cmd=showAdmin">        
             <button class="button">Admin</button>
             </a>  
         </p>      

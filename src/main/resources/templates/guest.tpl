@@ -89,7 +89,7 @@
 
 <body>
 		
-	<form action="servlet" method="get">
+	<form  action="/roboreceptionist/servlet?cmd=submitGuest" method="post">
 
 		<fieldset id="guest1">
 			<legend>Please enter your name and the name of your addressee:</legend>
@@ -104,18 +104,17 @@
 			
 			<textarea name="message" id="message"></textarea>
 			
-			<input type="radio" name="radio" id="radio" value="I'm here for a meeting." />
+			<input type="radio" name="message" id="message" value="I'm here for a meeting." />
 			<label for="radio">I'm here for a meeting.</label><br />
-			<input type="radio" name="radio" id="radio" value="I'm here for lunch." />
+			<input type="radio" name="message" id="message" value="I'm here for lunch." />
 			<label for="radio">I'm here for lunch.</label><br />
-			<input type="radio" name="radio" value="I'm here to see you." />
+			<input type="radio" name="message" id="message" value="I'm here to see you." />
 			<label for="radio">I'm here to see you.</label>			
 		</fieldset>
 		
 		<div>	
-			<input type="submit" class="button" value="Submit" />			
-			<a href="/roboreceptionist/servlet?cmd=showHome">
-				<input type="button" class="button" value="Cancel" />
+			<input type="submit" class="button" value="Submit" />
+			<input type="button" class="button" value="Cancel" onClick="window.location.replace('/roboreceptionist/servlet')"/>
 			</a>
 		</div>
 	</form>

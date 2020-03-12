@@ -82,7 +82,7 @@
     </fieldset>        
     
     <div>            
-        <input type="button2" class="button" value="Cancel" onClick="window.location.replace('/roboreceptionist/servlet')">
+        <input type="button" class="button" value="Cancel" onClick="window.location.replace('/roboreceptionist/servlet')">
     </div>
     
 </body>

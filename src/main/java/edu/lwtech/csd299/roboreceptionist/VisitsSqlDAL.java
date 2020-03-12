@@ -24,10 +24,10 @@ import org.apache.log4j.Logger;
         // }
 
         String query = "INSERT INTO Visits";
-        query += " (guest, company, message, time, employee)";
-        query += " VALUES ("+ Visit.getGuestName()+", "+ Visit.getCompany()+", "+ Visit.getMessage()+
-        ", NOW(), " + Visit.getEmployee()+")";
-        //query += " VALUES (?,?,?,?,?)";
+        query += " (guest, company, message, employee, time)";
+        //query += " VALUES ("+ Visit.getGuestName()+", "+ Visit.getCompany()+", "+ Visit.getMessage()+
+        //", NOW(), " + Visit.getEmployee()+")";
+        query += " VALUES (?,?,?,?,?)";
 
         //List<String> items = list.getItems();
 
@@ -36,9 +36,11 @@ import org.apache.log4j.Logger;
         //int listID = SQLUtils.executeSQLInsert(conn, query, "listID", 1, Visit.getGuestName(),
         //Visit.getCompany(),Visit.getMessage(),timee, Visit.getEmployee());
 
-        int listID = SQLUtils.executeSQLInsert(conn, query, "listID");
+        int listID = SQLUtils.executeSQLInsert(conn, query, "listID",
+        timee,Visit.getGuestName(), Visit.getCompany(), Visit.getMessage(),Visit.getEmployee());
         
-        logger.debug("TopTenList successfully inserted with listID = " + listID);
+        logger.debug("Visit successfully inserted with listID = " + listID);
+
         return new Visits(Visit.getEmployee(), Visit.getGuestName(), Visit.getCompany(), Visit.getMessage());
     }
 

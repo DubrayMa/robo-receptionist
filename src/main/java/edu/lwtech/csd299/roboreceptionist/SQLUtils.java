@@ -80,8 +80,8 @@ class SQLUtils {
     }
 
 
-    //public static int executeSQLInsert(Connection conn, String query, String recID, int id, String... arguments) {
-    public static int executeSQLInsert(Connection conn, String query, String recID) {
+    public static int executeSQLInsert(Connection conn, String query, String recID, java.sql.Timestamp time, String... arguments) {
+    //public static int executeSQLInsert(Connection conn, String query, String recID) {
         logger.debug("Executing SQL Insert: " + query);
 
         int newID = -1;
@@ -92,10 +92,10 @@ class SQLUtils {
             PreparedStatement stmt = conn.prepareStatement(query, returnColumns);
 
             // Substitute in the argument values for the question marks
-            // int position = 1;
-            // for (String arg : arguments)
-            //     stmt.setString(position++, arg);
-
+            int position = 1;
+            for (String arg : arguments)
+                stmt.setString(position++, arg);
+            stmt.setTimestamp(position++, time);
             // Execute the INSERT statement
             stmt.executeUpdate();
             

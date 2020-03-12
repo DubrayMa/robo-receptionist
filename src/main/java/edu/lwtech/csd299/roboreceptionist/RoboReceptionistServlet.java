@@ -27,8 +27,8 @@ public class RoboReceptionistServlet extends HttpServlet {
     public void init(ServletConfig config) throws ServletException {
         //connect to database
         logger.warn("=========================================");
-        logger.warn("  RoboReceptionistServlet init() started");
-        logger.warn("    http://localhost:8080/roboreceptionist/servlet");
+        logger.warn("RoboReceptionistServlet init() started");
+        logger.warn("http://localhost:8080/roboreceptionist/servlet");
         logger.warn("=========================================");
 
         logger.info("Getting real path for templateDir");

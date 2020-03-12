@@ -27,8 +27,8 @@ public class RoboReceptionistServlet extends HttpServlet {
     public void init(ServletConfig config) throws ServletException {
         //connect to database
         logger.warn("=========================================");
-        logger.warn("  RoboReceptionistServlet init() started");
-        logger.warn("    http://localhost:8080/roboreceptionist/servlet");
+        logger.warn("RoboReceptionistServlet init() started");
+        logger.warn("http://localhost:8080/roboreceptionist/servlet");
         logger.warn("=========================================");
 
         logger.info("Getting real path for templateDir");
@@ -64,7 +64,7 @@ public class RoboReceptionistServlet extends HttpServlet {
         long startTime = System.currentTimeMillis();
 
         String command = request.getParameter("cmd");
-        if (command == null) command = "Home";//"show";
+        if (command == null) command = "showHome";//"show";
 
         String template = "";
         Map<String, Object> model = new HashMap<>();
@@ -93,7 +93,7 @@ public class RoboReceptionistServlet extends HttpServlet {
                 break;
             case "showGuest":
                 //show guest page (guest.tpl)
-                template = "guest1.tpl";
+                template = "guest.tpl";
                 break;
             case "showDelivery":
                 //show delivery page (delivery.tpl)

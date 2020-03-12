@@ -3,20 +3,20 @@
 <html>
 <head>
 	<meta charset="UTF-8">
-	<title>Guest2 Page</title>
+	<title>Guest Page</title>
 	<style>
 		body {background:rgb(255,255,255); font-size:1.5em;}
-		h1{font-size: 2.5em; color:rgb(153,153,153); border:500px; text-align:center;}
-		h1 span{position: relative; top:1.5em;}
+		h1{font-size: 2.2em; color:rgb(153,153,153); border:500px; text-align:center;}
+		h1 span{position: relative; top:0.2em;}
 		div{text-align: center}
 
 		/* Field set styles */
 
 		fieldset {
-			position: relative; top:3em;
+			position: relative; top:1em;
 			background-color: rgb(255, 246, 205);
 			border: 1px solid rgb(233, 69, 0);
-			text-align:center;
+			text-align:left-side;
 			float: none;
 			margin: 10px 0px 10px 2.5%;
 			width: 93%;
@@ -32,10 +32,9 @@
 		
 		/* Label styles */
 
-		label {
-			clear: left;
+		label {			
 			display: block;
-			float: left;
+			align: center;
 			font-size: 0.9em
 			margin: 7px 4% 7px 5px;
 			width: 100%;
@@ -45,9 +44,11 @@
 
 		textarea {
 			display: block;
-			font-size: 0.9em;
+			font-family: areal;
+			font-size: 1.2em;
+			font-weight: bolder;
 			float: left;
-			height: 150px;
+			height: 80px;
 			margin: 10px 0px;
 			width: 100%;
 		}
@@ -75,7 +76,7 @@
 		/* Submit button styles */
 
 		input[type="submit"], input[type="button"] {
-		position: relative; top:5em;
+		position: relative; top:3.8em;
 		display: inline;
 		background: rgb(255, 246, 205);
 		float: none;
@@ -88,11 +89,19 @@
 </head>
 
 <body>
-	<h1><span>Message Page</span></h1>
+	<h1><span>Visitor Page</span></h1>
 	
-	<form action="servlet" method="post">
+	<form action="servlet" method="get">
+
+		<fieldset id="guest1">
+			<legend>Please enter your name and the name of your addressee:</legend>
+			<label for="guest">Name of visitor:</label>
+			<input name="guest" id="guest" />
+			<label for="employee">Name of empolyee:</label>
+			<input name="employee" id="employee" />
+		</fieldset>
 	
-		<fieldset id="guest1" class="guest1" align="left">
+		<fieldset id="guest2" align="left">
 			<legend>Enter a message or choose a ready-made option:</legend>	
 			
 			<textarea name="message" id="message"></textarea>

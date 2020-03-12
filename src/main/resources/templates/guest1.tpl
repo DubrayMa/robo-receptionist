@@ -74,10 +74,10 @@
 <body>
 	<h1><span>Visitor Input Page</span></h1>
 	
-	<form name="form1" action="servlet" method="get">
+	<form name="form1" action="/roboreceptionist/servlet?cmd=submitGuest" method="post">
 	
 		<fieldset id="guest1" class="guest1">
-			<legend>Please enter your name and the name of your vis-a-vis:</legend>
+			<legend>Please enter your name and the name of your visitor:</legend>
 			<label for="guest">Name of visitor:</label>
 			<input name="guest" id="guest" />
 			<label for="employee">Name of empolyee:</label>
@@ -85,12 +85,8 @@
 		</fieldset>
 		
 		<p>	
-			<a href="/roboreceptionist/servlet?cmd=Guest2">	
-				<input type="button" class="button" value="Submit" onClick="btnClick();" />
-			</a>
-			<a href="/roboreceptionist/servlet?cmd=Home">
-				<input type="button" class="button" value="Cancel" />
-			</a>
+			<input type="button" class="button" value="Submit" onClick="btnClick();" />
+			<input type="button" class="button" value="Cancel" onClick="window.location.replace('/roboreceptionist/servlet')"/>
 		</p>
 	</form>
 </body>

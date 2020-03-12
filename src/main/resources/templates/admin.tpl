@@ -98,9 +98,8 @@
 				<button name="edit" id="edit" class="button" value="New" onclick="editClick()return false;;" >Edit</button>
 				<button name="del" id="del" class="button" value="New" onclick="delClick();return false;" >Del</button>
 				<button name="save" id="save" class="button" value="New" onclick="saveClick();return false;" >Save</button>
-				<a href="/roboreceptionist/servlet?cmd=Home">
-				<button type="button" class="button" value="Cancel" />Cancel
-			    </a>		
+				
+				<button type="button" class="button" value="Cancel" onClick="window.location.replace('/roboreceptionist/servlet')"/>Cancel		
 			</p>
 		</fieldset>
 	

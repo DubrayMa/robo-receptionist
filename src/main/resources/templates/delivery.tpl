@@ -84,31 +84,29 @@
 		<fieldset id="guest1" class="guest1">
 			<legend>Please click your delivery company button:</legend>
 			<p>		
-				<a href="/roboreceptionist/servlet?cmd=Amazon">
+				<a href="/roboreceptionist/servlet?cmd=deliveryPerson">
 					<input type="button1" class="button" value="Amazon" />
 				</a>
-				<a href="/roboreceptionist/servlet?cmd=FedEx">
+				<a href="/roboreceptionist/servlet?cmd=deliveryPerson">
 					<input type="button1" class="button" value="FedEx" />
 				</a>
-				<a href="/roboreceptionist/servlet?cmd=UPS">
+				<a href="/roboreceptionist/servlet?cmd=deliveryPerson">
 					<input type="button1" class="button" value="UPS" />
 				</a>
-				<a href="/roboreceptionist/servlet?cmd=GrubHub">
+				<a href="/roboreceptionist/servlet?cmd=deliveryPerson">
 					<input type="button1" class="button" value="GrubHub" />
 				</a>
-				<a href="/roboreceptionist/servlet?cmd=DoorDash">
+				<a href="/roboreceptionist/servlet?cmd=deliveryPerson">
 					<input type="button1" class="button" value="DoorDash" />	
 				</a>
-				<a href="/roboreceptionist/servlet?cmd=Other">	
+				<a href="/roboreceptionist/servlet?cmd=deliveryPerson">	
 					<input type="button1" class="button" value="Other" />
 				</a>		
 			</p>
 		</fieldset>
 		
 		<p>				
-			<a href="/roboreceptionist/servlet?cmd=Home">
-				<input type="button2" class="button" value="Cancel">
-			</a>
+				<input type="button2" class="button" value="Cancel" onClick="window.location.replace('/roboreceptionist/servlet')">
 		</p>
 	</form>
 </body>

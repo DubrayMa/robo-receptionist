@@ -68,7 +68,6 @@ public class RoboReceptionistServlet extends HttpServlet {
 
         String template = "";
         Map<String, Object> model = new HashMap<>();
-        String[] visitReq = new String[4];
         Visits visitsObj;
 
         //TODO: Add more URL commands to the servlet
@@ -87,23 +86,16 @@ public class RoboReceptionistServlet extends HttpServlet {
                 model.put("prevIndex", prevIndex);
                 model.put("nextIndex", nextIndex);
                 break;
-            case "Home":
+            case "showHome":
                 //show Home page (home.tpl)
                 
                 template = "home.tpl";
                 break;
-            case "Guest1":
+            case "showGuest":
                 //show guest page (guest.tpl)
-                visitReq[0] = request.getParameter("employee");
-                visitReq[0] = request.getParameter("guest");
                 template = "guest1.tpl";
                 break;
-            case "Guest2":
-                //show guest page (guest.tpl)
-                visitReq[0] = request.getParameter("message");
-                template = "guest2.tpl";
-                break;
-            case "Delivery":
+            case "showDelivery":
                 //show delivery page (delivery.tpl)
                 
                 template = "delivery.tpl";
@@ -113,39 +105,13 @@ public class RoboReceptionistServlet extends HttpServlet {
                 
                 template = "admin.tpl";
                 break; 
-            case "Amazon":
-                //show delivery page (delivery.tpl)
-                visitsObj = new Visits("Recpetionist2","amazonDelivery","Amazon","package for John Doe");
-                template = "home.tpl";
-                break; 
-            case "UPS":
-                //show delivery page (delivery.tpl)
-                visitsObj = new Visits("Recpetionist1","upsDelivery","UPS","package for John Doe");
+            case "deliveryPerson":
+                String company = request.getParameter("company");
 
-                template = "home.tpl";
-                break; 
-            case "FedEx":
-                //show delivery page (delivery.tpl)
-                visitsObj = new Visits("Recpetionist3","fedexDelivery","FedEx","package for John Doe");
-
-                template = "home.tpl";
-                break; 
-            case "GrubHub":
-                //show delivery page (delivery.tpl)
-                visitsObj = new Visits("Recpetionist3","grubHubDelivery","GrubHub","package for John Doe");
-
-                template = "home.tpl";
-                break; 
-            case "DoorDash":
-                //show delivery page (delivery.tpl)
-                visitsObj = new Visits("Recpetionist2","doorDashDelivery","DoorDash","package for John Doe");
-
-                template = "home.tpl";
-                break; 
-            case "Other":
-                //show delivery page (delivery.tpl)
-                visitsObj = new Visits("Recpetionist5","Delivery","unspecified","package for John Doe");
-
+                visitsObj = new Visits("Recpetionist2",company + "Delivery",company,"package for John Doe");
+                dal.insertVisits(visitsObj);
+                //alert/email receptionist
+                logger.info("your package has arrived please come and get it from: " + company);
                 template = "home.tpl";
                 break; 
 
@@ -179,8 +145,22 @@ public class RoboReceptionistServlet extends HttpServlet {
         Map<String, Object> model = new HashMap<>();
         
         switch (command) {
-            case "Message":
-
+            case "submitGuest":
+                Visits visits;
+                String employeeName = request.getParameter("employee");
+                String guestName = request.getParameter("guest");
+                String company = request.getParameter("company");
+                String message = request.getParameter("message");
+                if(company != "")
+                {
+                    visits = new Visits(employeeName,guestName,company, message);
+                }
+                else 
+                {
+                    visits = new Visits(employeeName,guestName,company, message);
+                }
+                dal.insertVisits(visits);
+                emailFormatLog(visits);
                 break;
                 
             default:
@@ -277,9 +257,11 @@ public class RoboReceptionistServlet extends HttpServlet {
         
         logger.info("...items inserted");
     }
-    private void emailFormatLog(String employeeEmail, String guestName, String message)
+    private void emailFormatLog(Visits visit)
     {
-        
+        logger.info("sent to: " + visit.getEmployee() + "@company.com");
+        logger.info("sent from: " + visit.getGuestName());
+        logger.info(visit.getMessage());
     }
 
 }

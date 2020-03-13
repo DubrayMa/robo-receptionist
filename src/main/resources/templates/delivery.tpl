@@ -79,29 +79,22 @@
 <body>
 	<h1><span>Delivery Page</span></h1>
 	
-	<form action="servlet" method="post">
+	<form action="/roboreceptionist/servlet?cmd=deliveryPerson" method="post">
 	
 		<fieldset id="guest1" class="guest1">
 			<legend>Please click your delivery company button:</legend>
 			<p>		
-				<a href="/roboreceptionist/servlet?cmd=deliveryPerson">
-					<input type="button1" class="button" value="Amazon" />
-				</a>
-				<a href="/roboreceptionist/servlet?cmd=deliveryPerson">
-					<input type="button1" class="button" value="FedEx" />
-				</a>
-				<a href="/roboreceptionist/servlet?cmd=deliveryPerson">
-					<input type="button1" class="button" value="UPS" />
-				</a>
-				<a href="/roboreceptionist/servlet?cmd=deliveryPerson">
-					<input type="button1" class="button" value="GrubHub" />
-				</a>
-				<a href="/roboreceptionist/servlet?cmd=deliveryPerson">
-					<input type="button1" class="button" value="DoorDash" />	
-				</a>
-				<a href="/roboreceptionist/servlet?cmd=deliveryPerson">	
-					<input type="button1" class="button" value="Other" />
-				</a>		
+					<input type="submit" class="button" value="Amazon" />
+
+					<input type="submit" class="button" value="FedEx" />
+
+					<input type="submit" class="button" value="UPS" />
+
+					<input type="submit" class="button" value="GrubHub" />
+
+					<input type="submit" class="button" value="DoorDash" />	
+
+					<input type="submit" class="button" value="Other" />		
 			</p>
 		</fieldset>
 		

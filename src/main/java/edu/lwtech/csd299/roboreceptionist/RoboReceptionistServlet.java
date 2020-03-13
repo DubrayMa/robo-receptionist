@@ -126,6 +126,7 @@ public class RoboReceptionistServlet extends HttpServlet {
                 dal.insertVisits(visits);
                 
                 emailFormatLog(visits);
+                confirmationMessage = "success! you're sign in has been logged and employee has been notified.";
                 break;
             case "deliveryPerson":
                 String company = request.getParameter("company");
@@ -236,9 +237,11 @@ public class RoboReceptionistServlet extends HttpServlet {
     }
     private void emailFormatLog(Visits visit)
     {
+        logger.info("-----------------------------------------");
         logger.info("sent to: " + visit.getEmployee() + "@company.com");
         logger.info("sent from: " + visit.getGuestName());
         logger.info(visit.getMessage());
+        logger.info("-----------------------------------------");
     }
 
     private Visits getVisitsFromRequestVisits(HttpServletRequest request)

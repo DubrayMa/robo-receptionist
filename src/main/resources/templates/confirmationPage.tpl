@@ -82,7 +82,7 @@
     </fieldset>        
     
     <div>            
-        <a href="list?cmd=showHome">Back to Home!</a>
+        <input type="button" class="button" value="Cancel" onClick="window.location.replace('/roboreceptionist/servlet')">
     </div>
     
 </body>

@@ -116,7 +116,7 @@ public class RoboReceptionistServlet extends HttpServlet {
         if (command == null) command = "";
 
         String confirmationMessage = "";
-        String template = "confirmation.tpl";
+        String template = "confirmationPage.tpl";
         Map<String, Object> model = new HashMap<>();
         Visits visits;
         switch (command) {
@@ -135,8 +135,9 @@ public class RoboReceptionistServlet extends HttpServlet {
                 dal.insertVisits(visits);
 
                 //alert/email receptionist
-                logger.info(message + company);
-                template = "confirmationPage.tpl";
+                
+                emailFormatLog(visits);
+                confirmationMessage = "success! you're sign in has been logged and employee has been notified.";
                 break;  
 
             default:
@@ -166,7 +167,7 @@ public class RoboReceptionistServlet extends HttpServlet {
         {
             logger.info("Disconnecting from the database.");
             //when we add disconnect function
-            //dal.disconnect();
+            dal.disconnect();
             logger.info("Disconneced!");
         } 
         catch (Exception e)

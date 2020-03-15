@@ -51,11 +51,11 @@ import org.apache.log4j.Logger;
         SQLUtils.executeSQL(conn, query);
     }
     
-    public Visits getVisit(int listID) {
-        logger.debug("Trying to get TopTenList with index: " + listID);
+    public Visits getVisit(String name) {
+        logger.debug("Trying to get TopTenList with index: " + name);
         
         String query = "SELECT *";
-        query += " FROM Visits WHERE visitID=" + listID;
+        query += " FROM Visits WHERE guest =" + name + "OR employee = " + name;
 
         List<SQLRow> rows = SQLUtils.executeSQL(conn, query);
         

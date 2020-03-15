@@ -130,9 +130,12 @@ public class RoboReceptionistServlet extends HttpServlet {
                 break;
             case "deliveryPerson":
                 String company = request.getParameter("company");
-                String message = "your package has arrived please come and get it from: ";
+                String name = request.getParameter("name");
+                String employee = request.getParameter("employee");
+                String message = "your package has arrived please come and get it";
 
-                visits = new Visits("Recpetionist","john Doe",company,message);
+                visits = new Visits(employee,name,company,message);
+
                 dal.insertVisits(visits);
 
                 //alert/email receptionist
@@ -196,7 +199,8 @@ public class RoboReceptionistServlet extends HttpServlet {
 
         String jdbcDriver = "org.mariadb.jdbc.Driver";          // Use MariaDB driver in case we connect to a cloud DB
         String connString = "jdbc:mariadb://";
-        connString += "csd299-winter-2020.cv18zcsjzteu.us-west-2.rds.amazonaws.com:3306";
+        connString += "localhost:3306";
+        //connString += "csd299-winter-2020.cv18zcsjzteu.us-west-2.rds.amazonaws.com:3306";
         connString += "/roboreceptionist";
         connString += "?user=root&password=lwtech";             //TODO: Remove these credentials from the source code 
 
@@ -238,27 +242,42 @@ public class RoboReceptionistServlet extends HttpServlet {
     private void emailFormatLog(Visits visit)
     {
         logger.info("-----------------------------------------");
-        logger.info("sent to: " + visit.getEmployee() + "@company.com");
+        logger.info("sent to: " + visit.getEmployee().replaceAll("\\s+", "") + "@lionheart.com");
         logger.info("sent from: " + visit.getGuestName());
-        logger.info(visit.getMessage());
+        if(visit.getCompany() != "")
+        {
+            logger.info("Company: " + visit.getCompany());
+        }
+        logger.info("message: " + visit.getMessage());
         logger.info("-----------------------------------------");
     }
 
     private Visits getVisitsFromRequestVisits(HttpServletRequest request)
     {
         Visits visits;
+        String company = "";
+        String message = request.getParameter("message");
         String employeeName = request.getParameter("employee");
         String guestName = request.getParameter("guest");
-        String company = "notACompany";//request.getParameter("company");
-        String message = request.getParameter("message");
-        if(company != "")
+        if(request.getParameter("company") != "")
         {
-            visits = new Visits(employeeName,guestName,company, message);
+            company = request.getParameter("company");
         }
-        else 
-        {
-            visits = new Visits(employeeName,guestName,company, message);
-        }
+        
+        visits = new Visits(employeeName,guestName,company, testMessageForEmpty(request, message));
         return visits;
+    }
+    private String testMessageForEmpty(HttpServletRequest request, String message)
+    {
+        String returnMessage = message;
+        if(message == null || message == "")
+        {
+            if(request.getParameter("myradio") != null || request.getParameter("myradio")!= "")
+                returnMessage = request.getParameter("myradio");
+            else
+                returnMessage = "not found";
+        }
+
+        return returnMessage;
     }
 }

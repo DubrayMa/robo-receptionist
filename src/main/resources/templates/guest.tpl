@@ -92,7 +92,9 @@
 			<label class="visitor" for="employee">
 				Name of employee:<input name="employee" type="text" />
 			</label>
-			
+			<label class="visitor" for="company">
+				Name of company*:<input name="company" type="text" />
+			</label>
 		</fieldset>
 	
 		<fieldset id="guest2" align="left">
@@ -100,14 +102,9 @@
 			
 			<textarea name="message" id="message"></textarea>
 
-			<p class="radio">
-				<input type="radio" name="myradio" id="myradio" value="I'm here for a meeting." />
-				<label for="myradio" class="rlabel">I'm here for a meeting.</label>
-				<input type="radio" name="myradio" id="myradio" value="I'm here for lunch." />
-				<label for="myradio" class="rlabel">I'm here for lunch.</label>
-				<input type="radio" name="myradio" id="myradio" value="I'm here to see you." />
-				<label for="myradio" class="rlabel">I'm here to see you.</label>
-			</p>			
+				<input type="radio" name="myradio" id="myradio" value="I'm here for a meeting.">I'm here for a meeting.</input>
+				<input type="radio" name="myradio" id="myradio" value="I'm here for lunch.">I'm here for lunch.</input>
+				<input type="radio" name="myradio" id="myradio" value="I'm here to see you.">I'm here to see you.</input>	
 					
 		</fieldset>
 		

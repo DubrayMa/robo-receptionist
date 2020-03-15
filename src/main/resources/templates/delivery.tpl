@@ -59,20 +59,39 @@
 	
 	<form action="/roboreceptionist/servlet?cmd=deliveryPerson" method="post">
 	
-		<fieldset id="guest1" class="guest1">
+		<fieldset id="company" class="guest1">
 			<legend>Please click your delivery company button:</legend>
 			<p>		
-					<input type="submit" class="button1" value="Amazon" />
+					<input type="submit" class="button1" name="company" value="Amazon"> 
+						<input type="hidden" name="name" value="John doe"/>
+						<input type="hidden" name="employee" value="Liz bore"/>
+					</input>
 
-					<input type="submit" class="button1" value="FedEx" />
+					<input type="submit" class="button1" name="company" value="FedEx">
+						<input type="hidden" name="name" value="John doe"/>
+						<input type="hidden" name="employee" value="Liz bore"/>
+					</input>
 
-					<input type="submit" class="button1" value="UPS" />
+					<input type="submit" class="button1" name="company" value="UPS">
+						<input type="hidden" name="name" value="John doe"/>
+						<input type="hidden" name="employee" value="Liz bore"/>
+					</input>
 
-					<input type="submit" class="button1" value="GrubHub" />
+					<input type="submit" class="button1" name="company" value="GrubHub">
+						<input type="hidden" name="name" value="John doe"/>
+						<input type="hidden" name="employee" value="Liz bore"/>
+					</input>
 
-					<input type="submit" class="button1" value="DoorDash" />	
+					<input type="submit" class="button1" name="company" value="DoorDash">
+						<input type="hidden" name="name" value="John doe"/>
+						<input type="hidden" name="employee" value="Liz bore"/>
+					</input>	
 
-					<input type="submit" class="button1" value="Other" />		
+					<input type="submit" class="button1" value="Other">
+						<input type="hidden" name="name" value="John doe"/>
+						<input type="hidden" name="employee" value="Liz bore"/>
+						<input type="hidden" name="company" value="unknown"/>
+					</input>		
 			</p>
 		</fieldset>
 		

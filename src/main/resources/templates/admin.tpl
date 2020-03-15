@@ -94,7 +94,7 @@
 
 		<fieldset name="buttons" id="buttons" width="100%">
 			<p>		
-				<button name="new" id="new" class="button" value="New" onclick="addRow('emplTable');return false;" >New</button>
+				<button name="search" id="searchName" class="button" value="search" onclick="addRow('emplTable');return false;" >New</button>
 				<button name="edit" id="edit" class="button" value="New" onclick="editClick()return false;;" >Edit</button>
 				<button name="del" id="del" class="button" value="New" onclick="delClick();return false;" >Del</button>
 				<button name="save" id="save" class="button" value="New" onclick="saveClick();return false;" >Save</button>

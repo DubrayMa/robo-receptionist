@@ -93,7 +93,7 @@
 				Name of employee:<input name="employee" type="text" />
 			</label>
 			<label class="visitor" for="company">
-				Name of company*:<input name="company" type="text" />
+				Name of company:<input name="company" type="text" placeholder="optional"/>
 			</label>
 		</fieldset>
 	

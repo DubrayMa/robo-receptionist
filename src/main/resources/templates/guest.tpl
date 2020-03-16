@@ -10,7 +10,8 @@
 		h1 {font-size:2.2em; color:rgb(153,153,153); text-align:center;}
 		h1 span {position:relative; top:0.2em;}
 		.buttons {text-align:center;}
-		.visitor {display:inline; float:left; text-align:right;}
+		.visitor {display:inline; float:left; text-align:left;}
+		.global {display:block; float:left; text-align:left;}
 		
 		fieldset {
 			position: relative; top:1em;
@@ -30,7 +31,8 @@
 		}
 
 		label {			
-			padding:0, 0, 10px, 0;
+			padding:0 10px 0 0;
+			margin:0 10px 0 10px;
 		}
 		
 		textarea {
@@ -49,7 +51,7 @@
 			font-size: 1em;				
 			margin: 7px 5px 0 5px;
 			width: 50%;
-		}*/
+		}
 		
 		.myradio {			
 			vertical-align:center;
@@ -58,7 +60,7 @@
 			height:17px;		
 		}
 
-		.radio {position:relative; left:0px;}
+		.radio {position:relative; left:0px; padding:0 10px 0 10px;}
 
 		.rlabel {padding: 0 30px 0 10px;}
 		
@@ -86,15 +88,21 @@
 		<fieldset id="guest1">
 			<legend>Please enter your name and the name of your addressee:</legend>
 			
-			<label class="visitor" for="guest">
-				Name of visitor:<input name="guest" type="text" />
-			</label>
-			<label class="visitor" for="employee">
-				Name of employee:<input name="employee" type="text" />
-			</label>
-			<label class="visitor" for="company">
-				Name of company:<input name="company" type="text" placeholder="optional"/>
-			</label>
+			<div class="global">
+				<p>
+					<label class="visitor" for="guest">
+						Name of visitor:<input name="guest" type="text" />
+					</label>
+					<label class="visitor" for="employee">
+						Name of employee:<input name="employee" type="text" />
+					</label>
+				</p>
+				<p>
+					<label class="optional" for="company">
+						Name of company:<input name="company" type="text" placeholder="optional" />
+					</label>
+				</p>
+			</div>
 		</fieldset>
 	
 		<fieldset id="guest2" align="left">
@@ -102,9 +110,9 @@
 			
 			<textarea name="message" id="message"></textarea>
 
-				<input type="radio" name="myradio" id="myradio" value="I'm here for a meeting.">I'm here for a meeting.</input>
-				<input type="radio" name="myradio" id="myradio" value="I'm here for lunch.">I'm here for lunch.</input>
-				<input type="radio" name="myradio" id="myradio" value="I'm here to see you.">I'm here to see you.</input>	
+				<input type="radio" name="myradio" id="myradio" value="I'm here for a meeting."> I'm here for a meeting.</input>
+				<input type="radio" name="myradio" id="myradio" value="I'm here for lunch."> I'm here for lunch.</input>
+				<input type="radio" name="myradio" id="myradio" value="I'm here to see you."> I'm here to see you.</input>	
 					
 		</fieldset>
 		

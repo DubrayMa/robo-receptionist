@@ -9,7 +9,7 @@
             body{background-color:rgb(0,102,204); align:center; font-size:3em;}
             h1{color:rgb(255,255,0); font-size:3.5em; border:none;}
             .span1 {position:absolute; top:30%; left:50%; transform:translate(-45%, -50%);}
-            .span2 {display:inline; float:left;
+            .span2 {display:inline;float:left;
                 position:absolute; top:55%; left:50%; transform:translate(-45%, -50%);}
             .admin {
                 float:left; position:relative; left:5px; top:5px;
@@ -19,8 +19,8 @@
             .button{
                 width:200px; background-color:rgb(255,255,0); border:3px #CCCCCC solid; 
                 border-radius:10px; color:black; padding:15px 32px; text-aling:center;
-                text-decoration:none; display:inline-block; font-size:24px;
-                margin:0 40px 0 40px; cursor:pointer;
+                text-decoration:none; font-size:24px;
+                margin:0 30px 0 30px; cursor:pointer;
             }
             input[type="image"] {width:70px; border:3px #CCCCCC solid; border-radius:5px;}
         </style>
@@ -36,11 +36,11 @@
         <span class="span2">
             <a href="/roboreceptionist/servlet?cmd=showGuest">
                 <button class="button">Guest</button>
-            </a>            
+            </a>
             <a href="/roboreceptionist/servlet?cmd=showDelivery">        
                 <button class="button">Delivery</button>
             </a>           
-        </p></span>
+        </span>
 
     </body>
 </html>

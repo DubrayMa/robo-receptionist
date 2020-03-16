@@ -34,12 +34,12 @@
         <span class="span1"><h1>Welcome!</h1></span>
         
         <span class="span2">
-            <a href="/roboreceptionist/servlet?cmd=showGuest">
-                <button class="button">Guest</button>
-            </a>
-            <a href="/roboreceptionist/servlet?cmd=showDelivery">        
-                <button class="button">Delivery</button>
-            </a>           
+            <button class="button">
+                <a href="/roboreceptionist/servlet?cmd=showGuest">Guest</a>                
+            </button>
+            <button class="button">
+                <a href="/roboreceptionist/servlet?cmd=showDelivery">Delivery</a>       
+            </button>            
         </span>
 
     </body>

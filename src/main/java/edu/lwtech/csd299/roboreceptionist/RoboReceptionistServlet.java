@@ -199,10 +199,10 @@ public class RoboReceptionistServlet extends HttpServlet {
 
         String jdbcDriver = "org.mariadb.jdbc.Driver";          // Use MariaDB driver in case we connect to a cloud DB
         String connString = "jdbc:mariadb://";
-        connString += "localhost:3306";
-        //connString += "csd299-winter-2020.cv18zcsjzteu.us-west-2.rds.amazonaws.com:3306";
+        //connString += "localhost:3306";
+        connString += "csd299-winter-2020.cv18zcsjzteu.us-west-2.rds.amazonaws.com:3306";
         connString += "/roboreceptionist";
-        connString += "?user=root&password=lwtech";             //TODO: Remove these credentials from the source code 
+        connString += "?user=roboreceptionist&password=lwtech";             //TODO: Remove these credentials from the source code 
 
         Connection conn = SQLUtils.connect(connString, jdbcDriver);
         if (conn == null) {
